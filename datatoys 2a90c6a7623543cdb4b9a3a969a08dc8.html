@@ -1,0 +1,675 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>datatoys</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2a90c6a7-6235-43cd-b4b9-a3a969a08dc8" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🧸</span></div><h1 class="page-title">datatoys</h1></header><div class="page-body"><p id="30c53749-3248-4fd9-a174-7a10f9ca43f3" class="">
+</p><p id="2ba30f17-d858-4b88-bbdc-e09cfb73ce65" class="">
+</p><h1 id="25cda853-48dd-4b73-9020-e65596594bf9" class=""><details open=""><summary>일반행정</summary></details></h1><div class="indented"><h2 id="c8ee7217-df0f-45b6-97c1-a38649d4c736" class="">아파트매매 실거래 자료</h2><h3 id="bf372902-0208-4538-a32c-8275c23baf6b" class=""><strong>apartmentPrice</strong></h3><figure id="b827ad73-0a63-4b8d-ab60-e547baadb7d9"><a href="https://www.data.go.kr/data/15058747/openapi.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">국토교통부_아파트매매 실거래자료</div><div class="bookmark-description">부동산 거래신고에 관한 법률에 따라 신고된 주택의 실거래 자료를 제공</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15058747/openapi.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="ac8c33ce-9cdd-4974-9f4c-8b78c0b2f126" class="bulleted-list"><li style="list-style-type:disc"> OPEN API</li></ul><p id="1c7b8861-1047-42f0-b75c-c859d3e8c3c3" class="">
+</p></div><h1 id="625a339e-8db9-47b8-8f67-f210e542bba6" class=""><details open=""><summary>농림축산</summary></details></h1><div class="indented"><h2 id="8732e551-af3e-41d9-9bea-191745eafe36" class="">한국마사회 말 육성정보</h2><h3 id="6422dd05-aedc-4e03-81ed-56cf3e2fb610" class=""><strong>horse</strong></h3><p id="e092a168-d4a9-46c4-b60d-9f44df1af03f" class="">
+</p><figure id="cc9575ce-3ddd-44d3-9781-660145aa6be8"><a href="https://www.data.go.kr/data/15036581/openapi.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국마사회 말 육성정보</div><div class="bookmark-description">마필에 대하여 여러 경마공원에서 시행한 육성훈련검사의 시행 내역입니다. (시행장소, 육성조련사이름, 마번, 입사일, 퇴사일, 위탁정보 등)</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15036581/openapi.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="8da570bb-2e0b-45d5-a8b4-d3a98c41a4e3" class="bulleted-list"><li style="list-style-type:disc"> OPEN API</li></ul><h2 id="3883c61d-841e-486e-ba97-d0734b91c3ab" class="">축산물품질평가원_축산물통합이력정보</h2><h2 id="68127715-ab6d-4eec-b81a-fd8e1b0a7033" class="">animal</h2><figure id="dbf6cea6-d762-409e-9d0a-369c30938cd4"><a href="https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15058923" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">축산물품질평가원_축산물통합이력정보</div><div class="bookmark-description">축산물(쇠고기, 돼지고기) 개체 및 이동 등 도축부터 검사, 판매에 이르기끼지의 이력정보를 제공</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15058923</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="722b00f6-bec5-4229-bab6-55ee2f7b1490" class="bulleted-list"><li style="list-style-type:disc">OPEN API</li></ul><h2 id="d41dec17-0486-435e-b2a6-dead16b388cc" class=""><strong>농촌진흥청 국립축산과학원_한우 씨수소 정보</strong></h2><h2 id="a653cd06-1b59-4693-a972-52939090673a" class="">brblInfo</h2><figure id="c8a313b8-3ae1-4774-b98a-cc1c8b9fe835"><a href="https://www.data.go.kr/data/15101999/openapi.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">농촌진흥청 국립축산과학원_한우 씨수소 정보</div><div class="bookmark-description">한우씨수소의 번호, 부․모 번호, 출생일, 근교계수, 생존여부, 판매여부 등을 제공하여 해당 씨수소 이력관리를 돕는 기능을 제공합니다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15101999/openapi.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="6117da55-5573-43bc-b124-7485f7f5e18b" class="bulleted-list"><li style="list-style-type:disc">OPEN API : XML</li></ul></div><h1 id="7a9055f4-aee5-48aa-885c-dd4da746423b" class=""><details open=""><summary>문화체육관광</summary></details></h1><div class="indented"><h2 id="19e65cb9-715a-43df-89db-73934d92406f" class="">뉴스 빅데이터</h2><h3 id="b6545645-793d-44b7-927d-ac9d3b2323d8" class=""><strong>newsEconomy</strong></h3><figure id="35523dfd-d1c3-492e-ac55-1108fb49ab4b"><a href="https://www.data.go.kr/data/15068899/fileData.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국언론진흥재단_뉴스빅데이터_고빈도사용명사_경제면_20220930</div><div class="bookmark-description">뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보. 분야별 보도에서 월별로 가장 많이 등장한 명사를 200개 추출해 순위와 빈도를 제공 https://www.bigkinds.or.kr 에 접속하면 보다 많은 정보를 확인할 수 있습니다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15068899/fileData.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="27678bca-2d7a-4fca-a2c6-8f00bba4170b" class="bulleted-list"><li style="list-style-type:disc"> filedata : CSV</li></ul><ul id="691b950d-43d7-404c-8540-262d732b2809" class="bulleted-list"><li style="list-style-type:disc"> 뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보.</li></ul><ul id="18f1c2b6-8b8d-43fc-8def-f2b07cfbcc06" class="bulleted-list"><li style="list-style-type:disc"> 고빈도 사용명사를 분류 - 경제면</li></ul><h3 id="c0cc07b8-c34a-4a92-8671-641eefb74634" class=""><strong>newsSociety</strong></h3><figure id="ee677266-055e-4227-94a4-2eac31d425e9"><a href="https://www.data.go.kr/data/15065434/fileData.do?recommendDataYn=Y" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국언론진흥재단_뉴스빅데이터_고빈도사용명사_사회면_20220930</div><div class="bookmark-description">뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보. 분야별 보도에서 월별로 가장 많이 등장한 명사를 200개 추출해 순위와 빈도를 제공 https://www.bigkinds.or.kr 에 접속하면 보다 많은 정보를 확인할 수 있습니다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15065434/fileData.do?recommendDataYn=Y</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="0f187a1b-5c90-42ed-ba47-e1165def6e5e" class="bulleted-list"><li style="list-style-type:disc"> filedata : CSV</li></ul><ul id="b129238b-0b94-4995-b5ef-15e76a4649bc" class="bulleted-list"><li style="list-style-type:disc"> 뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보.</li></ul><ul id="d04360e9-3083-4839-9b24-c564cef1654f" class="bulleted-list"><li style="list-style-type:disc"> 고빈도 사용명사를 분류 - 사회면</li></ul><h3 id="6eb58064-8524-410d-add0-ec1e9da07224" class=""><strong>newsPolitics</strong></h3><figure id="1de10acb-deb1-4ba4-8bfd-4b99146f0537"><a href="https://www.data.go.kr/data/15065411/fileData.do?recommendDataYn=Y" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국언론진흥재단_뉴스빅데이터_고빈도사용명사_정치면_20220930</div><div class="bookmark-description">분야별 보도에서 월별로 가장 많이 등장한 명사를 200개 추출해 순위와 빈도를 제공 뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보 https://www.bigkinds.or.kr 에 접속하면 보다 많은 정보를 확인할 수 있습니다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15065411/fileData.do?recommendDataYn=Y</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="cf5eeb08-1ea8-437f-9c03-a214255fcfb6" class="bulleted-list"><li style="list-style-type:disc"> filedata : CSV</li></ul><ul id="03afa8ac-dd03-49c5-828b-61d192d292c4" class="bulleted-list"><li style="list-style-type:disc"> 뉴스데이터베이스 &quot;BIGKinds&quot; 에서 54개 신문방송의 뉴스를 분석한 메타정보.</li></ul><ul id="1c110c32-d64c-4b60-8abd-2478744ea226" class="bulleted-list"><li style="list-style-type:disc"> 고빈도 사용명사를 분류 - 정치면</li></ul><h2 id="de15efa1-48f6-4857-922e-99335bb4cb85" class=""><strong>한국도로공사</strong></h2><h3 id="a17d50e1-97ca-4505-ab94-85d6374b1ff4" class="">restareaToilet : 휴게소 화장실 현황</h3><figure id="99926e5b-644f-4739-b168-120f75096450"><a href="https://www.data.go.kr/data/15043712/fileData.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국도로공사_휴게소별 화장실 현황_20201231</div><div class="bookmark-description">한국도로공사에서 관리는 고속도로 휴게소별 화장실 현황을 나타내는 자료이니다.(노선,시설명,남자_변기수,여자_변기수) 공공데이터활용지원센터는 공공데이터포털에 개방되는 3단계 이상의 오픈 포맷 파일데이터를 오픈 API(RestAPI 기반의 JSON/XML)로 자동변환하여 제공합니다. 오픈 API를 활용하기 위해서는 공공데이터포털 회원 가입 및 활용신청이 필요하며, 활용 관련 문의는 공공데이터활용지원센터로 연락주시기 바라며, 데이터 자체에 대한 문의는 아래 제공기관의 관리부서 전화번호로 연락주시기 바랍니다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15043712/fileData.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="7aa27c7c-3b4a-49fa-987e-d580342bab00" class="bulleted-list"><li style="list-style-type:disc">filedata : CSV</li></ul><ul id="949183fe-8069-4da4-87b9-0bce17933df1" class="bulleted-list"><li style="list-style-type:disc">한국도로공사에서 관리는 고속도로 휴게소별 화장실 현황을 나타내는 자료</li></ul><h3 id="c822a962-d3d6-496b-8722-4a704fd650d6" class="">highwayToilet : 고속도로 화장실 현황</h3><figure id="86a7e1af-ade1-40c3-8e10-8e93521d2a4e"><a href="https://www.data.go.kr/data/15045609/fileData.do" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국도로공사_화장실현황_20210107</div><div class="bookmark-description">화장실현황(부서,노선,건물구분,건물명,남자소계,남자소변,남자양변,남자화변,여자소계,여자양변,여자화변,남유아소변,남유아양변,여유아소변,여유아양변,남장애인양변,여장애인양변,임시남자화장실,임시여자화장실,전경파일첨부,평면파일첨부)</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15045609/fileData.do</div></div><img src="http://data.go.kr/images/biz/data-search/bg-nation.png" class="bookmark-image"/></a></figure><ul id="d66be1e3-822c-44ab-8298-6ff71301bdba" class="bulleted-list"><li style="list-style-type:disc">filedata : CSV</li></ul><h3 id="e63b0f8f-58c7-4dc8-971a-8a034800f8cb" class="">highwayLPG : 고속도로 LPG 주유소현황</h3><figure id="2a200e0e-b90d-4982-bde6-9b75afda2f04"><a href="https://www.data.go.kr/data/15076638/openapi.do?recommendDataYn=Y" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">한국도로공사_LPG 휴게소 현황</div><div class="bookmark-description">고속도로 LPG 휴게소 현황 데이터를 제공한다.</div></div><div class="bookmark-href"><img src="https://www.data.go.kr/images/biz/DATA.ico" class="icon bookmark-icon"/>https://www.data.go.kr/data/15076638/openapi.do?recommendDataYn=Y</div></div><img src="https://www.data.go.kr/images/biz/common/logo/logo-footer-01.png" class="bookmark-image"/></a></figure><ul id="af3ad9e0-4ab7-4173-a494-bbd1c38e8d0c" class="bulleted-list"><li style="list-style-type:disc">OPEN API</li></ul><p id="8f0429a6-85e8-4c90-bf9f-e467d47979b8" class="">
+</p></div><p id="16a7e672-3614-4506-be34-5c5444054615" class="">
+</p></div></article></body></html>
